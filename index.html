@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pile ou Face App</title>
+    <link  rel="stylesheet" href="style.css">
+
+    
+</head>
+<body>
+    <h1>
+        <span class="pile-title">Pile</span> ou <span class="face-title">Face</span>
+    </h1>
+
+
+    <button onclick="flipCoin()"> Clique pour jeter !</button>
+
+    <input type="text" id="result" value="Result" readonly>
+
+    <!-- Image coin flip -->
+    <div class="image-container">
+        <img src="Coin_flip.png" alt="Coin Flip" class="responsive-image">
+    </div>
+    
+    
+    <script>
+        function flipCoin() {
+        const randomNumber = Math.random();
+        let result;
+        const resultField = document.getElementById("result");
+
+        // Nettoyer toutes les anciennes classes avant d'en ajouter une
+        resultField.classList.remove("pile", "face");
+
+        if (randomNumber > 0.5) {
+            result = "Pile";
+            resultField.classList.add("pile");
+        } else {
+            result = "Face";
+            resultField.classList.add("face");
+        }
+
+
+        resultField.value = result;
+
+        // Ajoute l'animation de flip
+        resultField.classList.remove("flip"); // reset si déjà appliqué
+        void resultField.offsetWidth; // force le DOM à "recalculer" pour relancer l'anim
+        resultField.classList.add("flip");
+
+    }
+
+             
+        
+    </script>
+
+    
+
+</body>
+</html>
